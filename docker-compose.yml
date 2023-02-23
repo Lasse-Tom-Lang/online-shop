@@ -1,0 +1,25 @@
+services:
+  server:
+    container_name: server
+    build: ./
+    ports:
+      - 80:80
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    volumes:
+      - /Users/lasselang/Documents/Programmieren/PHP/online-shop:/var/www/html
+  database:
+    image: mysql:latest
+    container_name: database
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=db
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db:

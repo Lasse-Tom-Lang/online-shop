@@ -1,6 +1,31 @@
 <?php
   include "loadProducts.php";
-  $test = new Product("Test", 12, "Lorem ipsum dolor sit amet")
+
+  $servername = "192.168.178.36";
+  $database = "db";
+  $username = "root";
+  $password = "12345678";
+  $port = 3306;
+
+  $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+  if ($conn == false) {
+    die();
+  }
+  if ($conn->connect_error) {
+    die();
+  }
+
+  $items = array([]);
+
+  $sql = file_get_contents('SQL/getShopItems.sql');
+
+  $result = $conn->query($sql);
+  while($row = $result->fetch_assoc()) {
+    array_push($items, new Product($row["Name"], $row["Price"], $row["Description"]));
+  }
+
+  mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +41,11 @@
     <h2>Our products</h2>
     <section id="product-section" aria-label="Products">
       <?php
-        $test->renderProduct();
-        $test->renderProduct();
-        $test->renderProduct();
-        $test->renderProduct();
+        foreach (array_values($items) as $i => $value) {
+          if ($i != 0) {
+            echo $value->renderProduct();
+          }
+        }
       ?>
     </section>
   </body>
