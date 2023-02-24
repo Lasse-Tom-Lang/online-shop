@@ -8,4 +8,13 @@
 
     return mysqli_connect($servername, $username, $password, $database, $port);
   }
+
+  function checkConnection(mysqli | bool $conn) {
+    if ($conn == false) {
+      die("Can't access database");
+    }
+    if ($conn->connect_error) {
+      die("Can't access database");
+    }
+  }
 ?>

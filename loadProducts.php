@@ -23,4 +23,27 @@
       </div>
     ";
   }
+
+  function getProducts(mysqli $conn) {
+    $items = array([]);
+    $sql = file_get_contents('SQL/getShopItems.sql');
+    $result = $conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+      array_push($items, new Product($row["Name"], $row["Price"], $row["Description"], $row["ID"]));
+    }
+    return $items;
+  }
+
+  function getProduct(mysqli $conn) {
+    if ($_GET["productID"]) {
+      $productID = $_GET["productID"];
+
+      $sql = sprintf(file_get_contents('SQL/getShopItem.sql'), $productID);
+
+      $result = $conn->query($sql);
+      $row = $result->fetch_assoc();
+      return new Product($row["Name"], $row["Price"], $row["Description"], $row["ID"]);
+    }
+    return null;
+  }
 ?>

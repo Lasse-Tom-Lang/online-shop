@@ -5,23 +5,15 @@
 
   error_reporting(E_ERROR | E_PARSE);
 
+  session_start();
+
   $conn = logInToDatabase();
 
-  if ($conn == false) {
-    die("Can't access database");
-  }
-  if ($conn->connect_error) {
-    die("Can't access database");
-  }
+  checkConnection($conn);
 
-  $items = array([]);
+  $items = getProducts($conn);
 
-  $sql = file_get_contents('SQL/getShopItems.sql');
-
-  $result = $conn->query($sql);
-  while($row = $result->fetch_assoc()) {
-    array_push($items, new Product($row["Name"], $row["Price"], $row["Description"], $row["ID"]));
-  }
+  $user = getUserData($conn);
 
   mysqli_close($conn);
 ?>
@@ -44,7 +36,6 @@
             renderProduct($value);
           }
         }
-        //echo hash("sha256", "Password")
       ?>
     </section>
   </body>

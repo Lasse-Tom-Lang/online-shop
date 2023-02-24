@@ -1,29 +1,22 @@
 <?php
-    include "loadProducts.php";
-    include "databaseHandler.php";
-    error_reporting(E_ERROR | E_PARSE);
+  include "loadProducts.php";
+  include "databaseHandler.php";
+  include "User.php";
 
-    $conn = logInToDatabase();
+  error_reporting(E_ERROR | E_PARSE);
 
-    if ($conn == false) {
-      die("Can't access database");
-    }
-    if ($conn->connect_error) {
-      die("Can't access database");
-    }
+  $conn = logInToDatabase();
 
-    if ($_GET["productID"]) {
-      $productID = $_GET["productID"];
+  session_start();
 
-      $sql = sprintf(file_get_contents('SQL/getShopItem.sql'), $productID);
+  checkConnection($conn);
 
-      $result = $conn->query($sql);
-      $row = $result->fetch_assoc();
-      $product = new Product($row["Name"], $row["Price"], $row["Description"], $row["ID"]);
-    }
+  $product = getProduct($conn);
 
-    mysqli_close($conn);
-  ?>
+  $user = getUserData($conn);
+
+  mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html lang="en">

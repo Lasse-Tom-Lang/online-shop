@@ -27,6 +27,7 @@
         <?php
           if (isset($_POST["username"]) && isset($_POST["password"])) {
             $conn = logInToDatabase();
+            checkConnection($conn);
             $username = $_POST["username"];
             $password = hash("sha256", $_POST["password"]);
             $result = $conn->query("SELECT * FROM User WHERE name = '$username' AND password = '$password'");
