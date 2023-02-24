@@ -1,0 +1,1 @@
+SELECT * FROM ShopItem WHERE ID = %s LIMIT 1

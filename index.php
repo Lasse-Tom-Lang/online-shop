@@ -1,7 +1,7 @@
 <?php
   include "loadProducts.php";
-
-  $servername = "192.168.178.36";
+  error_reporting(E_ERROR | E_PARSE);
+  $servername = "192.168.44.51"; //"192.168.178.36";
   $database = "db";
   $username = "root";
   $password = "12345678";
@@ -10,10 +10,10 @@
   $conn = mysqli_connect($servername, $username, $password, $database, $port);
 
   if ($conn == false) {
-    die();
+    die("Can't access database");
   }
   if ($conn->connect_error) {
-    die();
+    die("Can't access database");
   }
 
   $items = array([]);
@@ -22,7 +22,7 @@
 
   $result = $conn->query($sql);
   while($row = $result->fetch_assoc()) {
-    array_push($items, new Product($row["Name"], $row["Price"], $row["Description"]));
+    array_push($items, new Product($row["Name"], $row["Price"], $row["Description"], $row["ID"]));
   }
 
   mysqli_close($conn);
@@ -43,7 +43,7 @@
       <?php
         foreach (array_values($items) as $i => $value) {
           if ($i != 0) {
-            echo $value->renderProduct();
+            renderProduct($value);
           }
         }
       ?>
