@@ -1,13 +1,9 @@
 <?php
     include "loadProducts.php";
+    include "databaseHandler.php";
     error_reporting(E_ERROR | E_PARSE);
-    $servername = "192.168.44.51"; //"192.168.178.36";
-    $database = "db";
-    $username = "root";
-    $password = "12345678";
-    $port = 3306;
 
-    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+    $conn = logInToDatabase();
 
     if ($conn == false) {
       die("Can't access database");
