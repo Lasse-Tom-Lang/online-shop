@@ -17,6 +17,7 @@
 
   mysqli_close($conn);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +28,19 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
-    <h1>Welcome</h1>
+    <nav>
+      <h1>Shop name</h1>
+      <div id="loginInfos">
+        <?php
+          if (isset($user)) {
+            echo $user->name;
+          }
+          else {
+            echo "<a href='/login.php'>Login</a>";
+          }
+        ?>
+      </div>
+    </nav>
     <h2>Our products</h2>
     <section id="product-section" aria-label="Products">
       <?php

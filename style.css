@@ -66,3 +66,30 @@
   text-align: center;
   color: red;
 }
+
+nav {
+  background-color: #ddd;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+nav h1 {
+  font-size: 2.5rem;
+}
+
+#loginInfos {
+  background-color: #bbb;
+  padding-inline: 2rem;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+}
+
+#loginInfos a {
+  text-decoration: none;
+  color: black;
+}

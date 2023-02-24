@@ -25,8 +25,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
+    <link rel="stylesheet" href="/style.css">
   </head>
   <body>
+    <nav>
+      <h1>Shop name</h1>
+      <div id="loginInfos">
+        <?php
+          if (isset($user)) {
+            echo $user->name;
+          }
+          else {
+            echo "<a href='/login.php'>Login</a>";
+          }
+        ?>
+      </div>
+    </nav>
     <?php
       echo $product->name;
     ?>
