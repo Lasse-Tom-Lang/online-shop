@@ -8,7 +8,7 @@ services:
     tty: true
     restart: unless-stopped
     volumes:
-      - /Users/lasselang/Documents/Programmieren/PHP/online-shop:/var/www/html
+      - /Users/lasselang/Documents/Programmieren/PHP/online-shop/src:/var/www/html
   database:
     image: mysql:latest
     container_name: database

@@ -1,5 +1,5 @@
 <?php
-  include "databaseHandler.php";
+  include "functions/databaseHandler.php";
 
   session_start();
 
