@@ -34,6 +34,7 @@
         <?php
           if (isset($user)) {
             echo $user->name;
+            echo "<a href='/logout.php' id='logout'>Logout</a>";
           }
           else {
             echo "<a href='/login.php'>Login</a>";
@@ -41,15 +42,23 @@
         ?>
       </div>
     </nav>
-    <h2>Our products</h2>
-    <section id="product-section" aria-label="Products">
-      <?php
-        foreach (array_values($items) as $i => $value) {
-          if ($i != 0) {
-            renderProduct($value);
+    <main>
+      <h2>Our products</h2>
+      <section id="product-section" aria-label="Products">
+        <?php
+          foreach (array_values($items) as $i => $value) {
+            if ($i != 0) {
+              renderProduct($value);
+            }
           }
-        }
-      ?>
-    </section>
+        ?>
+      </section>
+    </main>
+    <footer>
+      <h2>Shop name</h2>
+      <div id="imprint">
+        <h3>Imprint</h3>
+      </div>
+    </footer>
   </body>
 </html>
