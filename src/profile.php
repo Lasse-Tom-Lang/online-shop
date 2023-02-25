@@ -8,16 +8,16 @@
 
   session_start();
 
+  if (!isset($_SESSION["userID"])) {
+    header("Location: /");
+    exit();
+  }
+
   $conn = logInToDatabase();
 
   checkConnection($conn);
 
   $user = getUserData($conn);
-
-  if (!isset($user)) {
-    header("Location: /");
-    exit();
-  }
 
   getCartItems($conn, $user);
 

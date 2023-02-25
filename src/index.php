@@ -32,13 +32,7 @@
       <h1><a href="/">Shop name</a></h1>
       <div id="loginInfos">
         <?php
-          if (isset($user)) {
-            echo "<a href='/profile.php'>$user->name</a>";
-            echo "<a href='/logout.php' id='logout'>Logout</a>";
-          }
-          else {
-            echo "<a href='/login.php'>Login</a>";
-          }
+          setUserInfos($user);
         ?>
       </div>
     </nav>

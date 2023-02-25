@@ -15,6 +15,12 @@
 
   $user = getUserData($conn);
 
+  if (isset($_POST["addToCart"]) && isset($user) && isset($product)) {
+    $productID = $product->id;
+    $userID = $user->id;
+    $conn->query("INSERT INTO CartItem VALUES(\"" . $productID . "\", \"" . $userID . "\")");
+  }
+
   mysqli_close($conn);
 ?>
 
@@ -32,12 +38,7 @@
       <h1><a href="/">Shop name</a></h1>
       <div id="loginInfos">
         <?php
-          if (isset($user)) {
-            echo $user->name;
-          }
-          else {
-            echo "<a href='/login.php'>Login</a>";
-          }
+          setUserInfos($user);
         ?>
       </div>
     </nav>
@@ -45,6 +46,9 @@
       <?php
         echo $product->name;
       ?>
+      <form method="POST">
+        <input type="submit" value="Add to cart" name="addToCart">
+      </form>
     </main>
     <footer>
       <h2>Shop name</h2>
