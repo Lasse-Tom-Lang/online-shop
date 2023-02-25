@@ -1,0 +1,3 @@
+INSERT INTO CartItem
+VALUES
+	("4", "1234");

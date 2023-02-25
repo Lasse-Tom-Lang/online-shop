@@ -1,19 +1,25 @@
 <?php
-  include "functions/loadProducts.php";
   include "functions/databaseHandler.php";
   include "functions/User.php";
+  include "functions/loadProducts.php";
+  include "functions/ShoppingCart.php";
 
   error_reporting(E_ERROR | E_PARSE);
 
-  $conn = logInToDatabase();
-
   session_start();
+
+  $conn = logInToDatabase();
 
   checkConnection($conn);
 
-  $product = getProduct($conn);
-
   $user = getUserData($conn);
+
+  if (!isset($user)) {
+    header("Location: /");
+    exit();
+  }
+
+  getCartItems($conn, $user);
 
   mysqli_close($conn);
 ?>
@@ -24,27 +30,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
     <nav>
       <h1><a href="/">Shop name</a></h1>
-      <div id="loginInfos">
-        <?php
-          if (isset($user)) {
-            echo $user->name;
-          }
-          else {
-            echo "<a href='/login.php'>Login</a>";
-          }
-        ?>
-      </div>
     </nav>
     <main>
-      <?php
-        echo $product->name;
-      ?>
+      <h2>Welcome <?php echo $user->name; ?></h2>
+      <h2>Cart</h2>
+      <section aria-label="Cart" id="shoppingCart">
+        <?php
+          printShoppingCart($user);
+        ?>
+      </section>
     </main>
     <footer>
       <h2>Shop name</h2>

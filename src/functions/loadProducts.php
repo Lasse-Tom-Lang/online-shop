@@ -34,9 +34,12 @@
     return $items;
   }
 
-  function getProduct(mysqli $conn) {
-    if ($_GET["productID"]) {
+  function getProduct(mysqli $conn, int $id = null) {
+    if ($_GET["productID"] || isset($id)) {
       $productID = $_GET["productID"];
+      if (isset($id)) {
+        $productID = $id;
+      }
 
       $sql = sprintf(file_get_contents('SQL/getShopItem.sql'), $productID);
 

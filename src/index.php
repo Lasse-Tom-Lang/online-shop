@@ -29,11 +29,11 @@
   </head>
   <body>
     <nav>
-      <h1>Shop name</h1>
+      <h1><a href="/">Shop name</a></h1>
       <div id="loginInfos">
         <?php
           if (isset($user)) {
-            echo $user->name;
+            echo "<a href='/profile.php'>$user->name</a>";
             echo "<a href='/logout.php' id='logout'>Logout</a>";
           }
           else {

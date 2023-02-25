@@ -4,6 +4,7 @@
   * Product secion on index page
   * Login form
   * Login info on navigation
+  * Shopping cart
   * Media querys
 */
 
@@ -34,6 +35,11 @@ footer {
 
 nav h1 {
   font-size: 2.5rem;
+}
+
+nav h1 a {
+  text-decoration: none;
+  color: black;
 }
 
 /* Product secion on index page */
@@ -140,6 +146,42 @@ nav h1 {
 
 #logout {
   font-size: 1rem;
+}
+
+/* Shopping cart */
+
+#shoppingCart {
+  padding: 1rem;
+}
+
+.cartItem {
+  padding: .5rem;
+  background-color: #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartItem:first-of-type {
+  border-radius: 1rem 1rem 0 0;
+}
+
+.cartItem:last-of-type {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.cartItem:nth-of-type(2n) {
+  background-color: #ccc;
+}
+
+.cartItem a {
+  margin-bottom: .5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.cartItem span {
+  font-size: 1.5rem;
 }
 
 /* Media querys */

@@ -2,10 +2,15 @@
   class User {
     public string $name;
     public string $id;
+    public array $cart = [];
 
     function __construct(string $name, string $id) {
       $this->name = $name;
       $this->id = $id;
+    }
+
+    function addItemToCart(Product $product) {
+      array_push($this->cart, $product);
     }
   }
 
