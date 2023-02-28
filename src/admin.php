@@ -1,5 +1,4 @@
 <?php
-  include "functions/loadProducts.php";
   include "functions/databaseHandler.php";
   include "functions/User.php";
 
@@ -11,12 +10,11 @@
 
   checkConnection($conn);
 
-  $product = getProduct($conn);
-
   $user = getUserData($conn);
 
-  if (isset($_POST["addToCart"]) && isset($user) && isset($product)) {
-    $conn->query("INSERT INTO CartItem VALUES(\"" . $product->id . "\", \"" . $user->id . "\")");
+  if ($user->role != "admin") {
+    header("Location: /");
+    exit();
   }
 
   mysqli_close($conn);
@@ -28,7 +26,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Document</title>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body>
@@ -41,18 +39,7 @@
       </div>
     </nav>
     <main>
-      <?php
-        echo $product->name;
-      ?>
-      <form method="POST">
-        <input type="submit" value="Add to cart" name="addToCart">
-      </form>
+      <h2>Admin dashboard</h2>
     </main>
-    <footer>
-      <h2>Shop name</h2>
-      <div id="imprint">
-        <h3>Imprint</h3>
-      </div>
-    </footer>
   </body>
 </html>
