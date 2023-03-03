@@ -6,6 +6,7 @@
   * Login info on navigation
   * Shopping cart
   * Media querys
+  * Product page
 */
 
 * {
@@ -184,6 +185,39 @@ nav h1 a {
 
 .cartItem span {
   font-size: 1.5rem;
+}
+
+/* Product page */
+
+#productDescription {
+  margin: 2rem;
+}
+
+#productPrice {
+  font-weight: bold;
+  font-size: 3rem;
+  margin-inline: 1rem;
+}
+
+#productFlex {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+[name="addToCart"] {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  background-color: #bbb;
+  padding: .5rem;
+  border-radius: .5rem;
+  margin: 1rem;
+}
+
+[name="addToCart"]:hover {
+  background-color: #ddd;
 }
 
 /* Media querys */

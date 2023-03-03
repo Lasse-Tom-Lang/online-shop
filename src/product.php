@@ -41,9 +41,30 @@
       </div>
     </nav>
     <main>
-      <?php
-        echo $product->name;
-      ?>
+      <div id="productFlex">
+        <div>
+          <h2>
+            <?php
+              if (isset($product)) {
+                echo $product->name;
+              }
+              else {
+                echo "Product not found";
+              }
+            ?>
+          </h2>
+          <p id="productDescription">
+            <?php
+              echo $product->description;
+            ?>
+          </p>
+        </div>
+        <span id="productPrice">
+          <?php
+            echo "$" . $product->price;
+          ?>
+        </span>
+      </div>
       <form method="POST">
         <input type="submit" value="Add to cart" name="addToCart">
       </form>
