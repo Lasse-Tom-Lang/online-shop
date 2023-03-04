@@ -9,10 +9,12 @@
     }
   }
   function printShoppingCart(User $user) {
+    $totalPrice = 0;
     for ($i = 0; $i < sizeof($user->cart); $i++) {
       $price = $user->cart[$i]->price;
       $name = $user->cart[$i]->name;
       $id = $user->cart[$i]->id;
+      $totalPrice += $price;
       echo "
         <div class='cartItem'>
           <a href='/product.php?productID=$id'><h3>$name</h3></a>
@@ -20,5 +22,6 @@
         </div>
       ";
     }
+    return $totalPrice;
   }
 ?>

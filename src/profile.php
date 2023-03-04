@@ -42,9 +42,14 @@
       <h2>Cart</h2>
       <section aria-label="Cart" id="shoppingCart">
         <?php
-          printShoppingCart($user);
+          $totalPrice = printShoppingCart($user);
         ?>
       </section>
+      <span id="totalPrice">
+        <?php
+          echo "Total: $" . $totalPrice;
+        ?>
+      </span>
     </main>
     <footer>
       <h2>Shop name</h2>
