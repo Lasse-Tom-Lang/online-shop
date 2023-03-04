@@ -13,6 +13,8 @@
 
   $product = getProduct($conn);
 
+  $items = getProducts($conn);
+
   $user = getUserData($conn);
 
   if (isset($_POST["addToCart"]) && isset($user) && isset($product)) {
@@ -68,6 +70,24 @@
       <form method="POST">
         <input type="submit" value="Add to cart" name="addToCart">
       </form>
+      <h2>Other products</h2>
+      <section id="product-section" aria-label="Products">
+        <?php
+          $isIn = false;
+          foreach (array_values($items) as $i => $value) {
+            if ($i != 0) {
+              if ($product == $value) {
+                $isIn = true;
+                continue;
+              }
+              renderProduct($value);
+            }
+            if (($i > 2 && !$isIn) || $i > 3) {
+              break;
+            }
+          }
+        ?>
+      </section>
     </main>
     <footer>
       <h2>Shop name</h2>
