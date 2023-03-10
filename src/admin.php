@@ -1,5 +1,6 @@
 <?php
   include "functions/databaseHandler.php";
+  include "functions/loadProducts.php";
   include "functions/User.php";
 
   error_reporting(E_ERROR | E_PARSE);
@@ -16,6 +17,8 @@
     header("Location: /");
     exit();
   }
+
+  $items = getProducts($conn);
 
   mysqli_close($conn);
 ?>
@@ -40,6 +43,17 @@
     </nav>
     <main>
       <h2>Admin dashboard</h2>
+      <h3>All products</h3>
+      <section id="productList">
+        <?php
+          foreach (array_values($items) as $i => $value) {
+            if ($i == 0) {
+              continue;
+            }
+            echo "<a class='listItem'><span>" . $value->name . "</span></a>";
+          }
+        ?>
+      </section>
     </main>
   </body>
 </html>

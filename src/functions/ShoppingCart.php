@@ -16,7 +16,7 @@
       $id = $user->cart[$i]->id;
       $totalPrice += $price;
       echo "
-        <div class='cartItem'>
+        <div class='listItem'>
           <a href='/product.php?productID=$id'><h3>$name</h3></a>
           <span>\$$price</span>
         </div>

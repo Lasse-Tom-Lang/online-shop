@@ -5,8 +5,9 @@
   * Login form
   * Login info on navigation
   * Shopping cart
-  * Media querys
   * Product page
+  * Admin page
+  * Media querys
 */
 
 * {
@@ -41,6 +42,11 @@ nav h1 {
 nav h1 a {
   text-decoration: none;
   color: black;
+}
+
+h3 {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 
 /* Product secion on index page */
@@ -155,7 +161,7 @@ nav h1 a {
   padding: 1rem;
 }
 
-.cartItem {
+.listItem {
   padding: .5rem;
   background-color: #ddd;
   display: flex;
@@ -163,27 +169,27 @@ nav h1 a {
   align-items: center;
 }
 
-.cartItem:first-of-type {
+.listItem:first-of-type {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
 
-.cartItem:last-of-type {
+.listItem:last-of-type {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 
-.cartItem:nth-of-type(2n) {
+.listItem:nth-of-type(2n) {
   background-color: #ccc;
 }
 
-.cartItem a {
+.listItem a {
   margin-bottom: .5rem;
   text-decoration: none;
   color: black;
 }
 
-.cartItem span {
+.listItem span {
   font-size: 1.5rem;
 }
 
@@ -227,6 +233,12 @@ nav h1 a {
 
 [name="addToCart"]:hover {
   background-color: #ddd;
+}
+
+/* Product page*/
+
+#productList {
+  margin: 1rem;
 }
 
 /* Media querys */
