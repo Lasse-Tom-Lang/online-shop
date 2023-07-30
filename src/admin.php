@@ -54,6 +54,7 @@
           }
         ?>
       </section>
+      <a href="/addProduct.php" id="newProductLink">Add product</a>
     </main>
   </body>
 </html>

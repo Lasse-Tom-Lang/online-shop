@@ -7,6 +7,7 @@
   * Shopping cart
   * Product page
   * Admin page
+  * New product page
   * Media querys
 */
 
@@ -235,10 +236,40 @@ h3 {
   background-color: #ddd;
 }
 
-/* Product page*/
+/* Admin page */
 
 #productList {
   margin: 1rem;
+}
+
+#newProductLink {
+  display: block;
+  padding: 1rem;
+  background-color: #ddd;
+  border-radius: 1rem;
+  margin: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+/* New product page */
+
+#newProductForm input {
+  width: calc(100% - 4rem);
+  display: block;
+  border: 0;
+  outline: 0;
+  padding: 1rem;
+  background-color: #ddd;
+  border-radius: 1rem;
+  margin: 1rem;
+  color: black;
+}
+
+#newProductForm input[type="submit"] {
+  width: calc(100% - 2rem);
+  cursor: pointer;
 }
 
 /* Media querys */

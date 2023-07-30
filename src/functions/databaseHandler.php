@@ -1,6 +1,6 @@
 <?php
   function logInToDatabase() {
-    $servername = "192.168.178.36";
+    $servername = "192.168.43.131";
     $database = "db";
     $username = "root";
     $password = "12345678";
