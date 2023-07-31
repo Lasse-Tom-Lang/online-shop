@@ -20,7 +20,11 @@
   $productAdded = false;
 
   if (isset($_POST["newProductName"]) && $_POST["newProductName"] != "" && isset($_POST["newProductDescription"]) && $_POST["newProductDescription"] != "" && isset($_POST["newProductPrice"])&& $_POST["newProductPrice"] != "") {
-    $sql = sprintf(file_get_contents('SQL/createShopItem.sql'), crc32(uniqid()), $_POST["newProductName"], $_POST["newProductDescription"], $_POST["newProductPrice"]);
+    $newProductName = str_replace("<", "&lt;", $_POST["newProductName"]);
+    $newProductName = str_replace(">", "&gt;", $newProductName);
+    $newProductDescription = str_replace("<", "&lt;", $_POST["newProductDescription"]);
+    $newProductDescription = str_replace(">", "&gt;", $newProductDescription);
+    $sql = sprintf(file_get_contents('SQL/createShopItem.sql'), crc32(uniqid()), $newProductName, $newProductDescription, $_POST["newProductPrice"]);
     $result = $conn->query($sql);
     $productAdded = true;
   }
